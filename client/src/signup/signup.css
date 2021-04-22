@@ -1,0 +1,84 @@
+.signup-container {
+    color: #262626;
+    flex-grow: 1;
+    margin-top: 12px;
+    max-width: 350px;
+}
+
+.instagram-logo {
+    width: 175px;
+    margin: 22px auto 12px;
+}
+
+.fb-logo {
+    height: 18px;
+    padding: 0 8px 2px;
+}
+
+.form-container {
+    width: 100%
+}
+
+.form-control {
+    display: initial;
+}
+
+.input-fields {
+    margin: 0 40px 6px;
+    align-items: stretch;
+}
+
+.username {
+    background: #FAFAFA;
+}
+
+.password {
+    background: #FAFAFA;
+}
+
+.login-button-container {
+    margin: 8px 40px;
+}
+
+.login-button {
+    border-radius: 4px;
+    padding: 5px 9px;
+}
+
+.fb-login {
+    color: #385185;
+}
+
+.text-strikethrough-container {
+    margin: 10px 40px 18px;
+    flex-direction: row;
+}
+
+.text-strikethrough {
+    content: '';
+    background: #dbdbdb;
+    display: block;
+    height: 1px;
+    position: relative;
+    top: .45em;
+    color: #dbdbdb;
+}
+
+.text-divider {
+    color: #8e8e8e;
+    flex-grow: 0;
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 15px;
+    margin: 0 18px;
+    text-transform: uppercase;
+}
+
+.forgot-password {
+    margin-top: 12px;
+    text-align: center;
+    color: #00376b;
+    font-size: 12px;
+    line-height: 14px;
+}

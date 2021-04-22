@@ -1,0 +1,50 @@
+.article-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-content: center;
+    margin: 32px auto 0;
+    max-width: 935px;
+    padding-bottom: 32px;
+    width: 100%;
+}
+
+.mockup-phone {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.phone-screenshot {
+    position: absolute;
+    left: 166px;
+    top: 99px;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+    max-width: 350px;
+    justify-content: center;
+}
+
+.login-container {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    margin: 0 0 10px;
+    padding: 10px 0;
+}
+
+.half-container {
+    max-width: 350px;
+}
+
+.signup-container {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+}

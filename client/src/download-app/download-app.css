@@ -1,0 +1,26 @@
+.app-text-container {
+    margin: 10px 20px 10px 20px;
+}
+
+p {
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #262626;
+}
+
+.app-download-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px 0 10px 0;
+}
+
+.app-download-link {
+    margin-right: 8px;
+}
+
+.itunes-download,
+.google-play-download{
+    height: 40px;
+}
