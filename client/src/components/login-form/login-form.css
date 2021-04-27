@@ -16,12 +16,13 @@
     display: initial;
 }
 
-.input-fields {
+.input-fields,
+.error-text {
     margin: 0 40px 6px;
     align-items: stretch;
 }
 
-.username,
+.email,
 .password {
     background: #FAFAFA;
 }
@@ -33,6 +34,13 @@
 .login-button {
     border-radius: 4px;
     padding: 5px 9px;
+}
+
+.login-button[disabled] {
+    border-radius: 4px;
+    padding: 5px 9px;
+    background-color: rgba(0,149,246,.3);
+    border: rgba(0,149,246,.3);
 }
 
 .fb-login {
