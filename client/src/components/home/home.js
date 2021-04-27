@@ -1,5 +1,5 @@
 import "./home.css"
-import Login from "../login/login";
+import LoginForm from "../login-form/login-form";
 import SignupSmall from "../signup-small/signup-small";
 import DownloadApp from "../download-app/download-app";
 import React from "react";
@@ -20,7 +20,7 @@ function Home() {
                 </div>
                 <div className="col-12 col-lg-6 right-container">
                     <div className="login-container text-center">
-                        <Login/>
+                        <LoginForm/>
                     </div>
                     <div className="signup-container text-center">
                         <SignupSmall/>

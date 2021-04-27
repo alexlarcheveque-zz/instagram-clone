@@ -1,13 +1,6 @@
-.signup-container {
-    color: #262626;
-    flex-grow: 1;
-    margin-top: 12px;
-    max-width: 350px;
-}
-
 .instagram-logo {
     width: 175px;
-    margin: 22px auto 12px;
+    margin: 0px;
 }
 
 .fb-logo {
@@ -28,10 +21,7 @@
     align-items: stretch;
 }
 
-.username {
-    background: #FAFAFA;
-}
-
+.username,
 .password {
     background: #FAFAFA;
 }
