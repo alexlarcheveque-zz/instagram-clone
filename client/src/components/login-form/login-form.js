@@ -1,8 +1,67 @@
 import React from "react";
 import "./login-form.css";
 
-function LoginForm() {
-    return (
+const emailValidation = (email) => {
+    const validEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (email.trim() === '') {
+        return 'Email is required';
+    }
+    if (!validEmail.test(email)) {
+        return 'Please enter a valid email';
+    }
+    return null;
+};
+
+const passwordValidation = (password) => {
+    const minPasswordLength = 6;
+    if (password.trim === '') {
+        return 'Password is required';
+    }
+    if (password.length < minPasswordLength) {
+        return `Password must be more than ${minPasswordLength} characters`;
+    }
+    return null;
+};
+
+const validate = {
+    email: emailValidation,
+    password: passwordValidation
+};
+
+class LoginForm extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            email: "",
+            emailErrorText: "",
+            password: "",
+            passwordErrorText: "",
+            isFormValid: false,
+        }
+    }
+
+    onChangeEmail = event => {
+        const email = event.target.value;
+        this.setState({email});
+        this.setState({emailErrorText: emailValidation(email)});
+        this.validateForm();
+    }
+
+    onChangePassword = event => {
+        const password = event.target.value;
+        this.setState({password});
+        this.setState({passwordErrorText: passwordValidation(password)});
+        this.validateForm();
+    }
+
+    validateForm = () => {
+        const isFormValid = (this.state.email && this.state.password) &&
+            !(this.state.emailErrorText && this.state.passwordErrorText);
+        this.setState({isFormValid});
+    }
+
+    render() {
+        return (
             <div className="align-items-center">
                 <div className="row logo justify-content-center">
                     <div className="col align-self-center">
@@ -12,13 +71,39 @@ function LoginForm() {
                 <div className="row password-form justify-content-center">
                     <form className="form-container">
                         <div className="input-fields">
-                            <input type="text" name="username" placeholder="Phone number, username, or email" className="form-control username"/>
+                            <input
+                                type="text"
+                                name="email"
+                                placeholder="Email"
+                                className="form-control email"
+                                onChange={this.onChangeEmail}
+                                value={this.state.email}
+                                required
+                            />
+                        </div>
+                        <div className="error-text">
+                            <small className="text-danger"> {this.state.emailErrorText} </small>
                         </div>
                         <div className="input-fields">
-                            <input type="text" name="password" placeholder="Password" className="form-control password"/>
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                className="form-control password"
+                                onChange={this.onChangePassword}
+                                required
+                            />
+                        </div>
+                        <div className="error-text">
+                            <small className="text-danger"> {this.state.passwordErrorText} </small>
                         </div>
                         <div className="login-button-container">
-                            <input type="submit" value="Log in" className="btn btn-primary btn-block login-button"/>
+                            <input
+                                type="submit"
+                                value="Log in"
+                                className="btn btn-primary btn-block login-button"
+                                disabled={!this.state.isFormValid}
+                            />
                         </div>
                     </form>
                 </div>
@@ -39,7 +124,8 @@ function LoginForm() {
                     <div className="col forgot-password"> <a>Forgot password?</a> </div>
                 </div>
             </div>
-    );
+        );
+    }
 }
 
 export default LoginForm;
