@@ -1,0 +1,75 @@
+.signup-form-container {
+    color: #262626;
+    flex-grow: 1;
+    margin-top: 12px;
+    max-width: 350px;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-form {
+    flex-direction: column;
+    max-width: 350px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.fb-button-login-container {
+    margin: 8px 40px 8px 40px;
+}
+
+.fb-button-login {
+    border: 1px solid transparent;
+    background-color: #0095f6;
+    border-radius: 4px;
+    color: white;
+    padding: 3px 9px;
+}
+
+.fb-logo-white-container {
+    display: inline-block;
+    margin-right: 8px;
+    position: relative;
+}
+
+.fb-logo-white {
+    height: 16px;
+    width: 16px;
+}
+
+.phone-email-input,
+.name-input,
+.username-input,
+.password-input {
+    background: #FAFAFA;
+}
+
+.signup-button-container {
+    margin: 8px 40px 8px 40px;
+}
+
+.signup-button {
+    padding: 3px 9px;
+}
+
+.terms {
+    color: #8e8e8e;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 10px 40px;
+    text-align: center;
+}
+
+a {
+    font-weight: 600;
+}
+
+h2 {
+    color: #8e8e8e;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 20px;
+    margin: 0 40px 10px;
+    text-align: center;
+}

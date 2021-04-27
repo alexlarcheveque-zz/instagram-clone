@@ -1,7 +1,7 @@
 import React from "react";
-import "./login.css";
+import "./login-form.css";
 
-function Login() {
+function LoginForm() {
     return (
             <div className="align-items-center">
                 <div className="row logo justify-content-center">
@@ -42,4 +42,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default LoginForm;
