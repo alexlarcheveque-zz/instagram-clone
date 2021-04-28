@@ -2,10 +2,8 @@ var express = require('express');
 var router = express.Router();
 const mysql = require("mysql");
 
-const AUTH_TABLE_NAME = "user";
-const AUTHENTICATE_USER = `SELECT * FROM ${AUTH_TABLE_NAME} WHERE username = ? AND password = ?`;
-const SIGNUP_USER = `INSERT INTO ${AUTH_TABLE_NAME}(email, name, username, password) VALUES (?, ?, ?, ?)`
-
+const AUTHENTICATE_USER = 'SELECT * FROM user WHERE email = ? AND password = ?';
+const SIGNUP_USER = 'INSERT INTO user(email, name, username, password) VALUES (?, ?, ?, ?)';
 
 const connection = mysql.createConnection({
     host: "localhost",
@@ -14,30 +12,37 @@ const connection = mysql.createConnection({
     database: "instagram_clone"
 });
 
-connection.connect(err => {
-    if (err) return err;
-});
+connection.connect(function(err) {
+    if (err) throw err
+    console.log('You are now connected...')
+})
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     res.send('Login/Signup into the Instagram application');
 });
 
 router.post("/login", (req, res) => {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
-    if (username && password) {
-        connection.query(AUTHENTICATE_USER, [username, password], (err, results) => {
-            if (results.length > 0) {
-                req.session.loggedin = true;
-                req.session.username = username;
-                res.redirect('/feed');
+    if (email && password) {
+        connection.query(AUTHENTICATE_USER, [email, password], (err, results) => {
+            if (err) {
+                res.send(error.message.toString());
             } else {
-                res.send('Incorrect Username and/or Password');
+                if (results.length > 0) {
+                    result = results[0];
+                    req.session.name = result.name;
+                    req.session.email = result.email;
+                    req.session.username= result.username;
+                    res.send('Successful login');
+                } else {
+                    res.send('Incorrect Username and/or Password');
+                }
             }
             res.end();
         });
     } else {
-        res.send('Please enter Username and Password');
+        res.send('Please enter Username and Password', req.body);
         res.end();
     }
 });
@@ -47,20 +52,18 @@ router.post("/signup", (req, res) => {
     const name = req.body.name;
     const username = req.body.username;
     const password = req.body.password;
-
+    console.log(email, name, username, password);
     if (email && name && username && password) {
         connection.query(SIGNUP_USER, [email, name, username, password], (err, results) => {
-            if (results.length > 0) {
-                req.session.loggedin = true;
-                req.session.username = username;
-                res.redirect('/feed');
+            if (err) {
+                res.send(err.message.toString());
             } else {
-                res.send('You cannot use this username, there is a duplicate username in the database');
+                res.send('Successful signup');
             }
             res.end();
         });
     } else {
-        res.send('Please enter Username and Password');
+        res.send('Please fill out name, email, username, and password');
         res.end();
     }
 });
