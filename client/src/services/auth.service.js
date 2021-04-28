@@ -1,17 +1,16 @@
-import axios from "axios";
+import axios from "./axios";
 
-const API_SIGNUP = "http://localhost:8000/api/auth/signup";
-const API_SIGNIN = "http://localhost:8000/api/auth/signin";
+const API_SIGNUP = "/api/auth/signup";
+const API_SIGNIN = "/api/auth/login";
 
 class AuthService {
-    getCurrentUser() {
+    getCurrentUser = () => {
         return JSON.parse(localStorage.getItem("user"));
     }
 
-    login(username, password) {
-        return axios
-            .post(API_SIGNIN, {
-                username,
+    login = (email, password) => {
+        return axios.post(API_SIGNIN, {
+                email,
                 password
             })
             .then(res => {
@@ -22,14 +21,15 @@ class AuthService {
             });
     }
 
-    logout() {
+    logout = () => {
         localStorage.removeItem("user");
     }
 
-    register(username, email, password) {
-        return axios.post(API_SIGNIN, {
-            username,
+    register = (email, name, username, password) => {
+        return axios.post(API_SIGNUP, {
             email,
+            name,
+            username,
             password
         });
     }

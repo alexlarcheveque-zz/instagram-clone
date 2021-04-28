@@ -1,6 +1,9 @@
 import React from "react";
 import "./login-form.css";
 import AuthService from "../../services/auth.service";
+import { Redirect } from "react-router";
+
+const authService = new AuthService();
 
 const emailValidation = (email) => {
     const validEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -18,7 +21,7 @@ const passwordValidation = (password) => {
     if (password.trim === '') {
         return 'Password is required';
     }
-    if (password.length < minPasswordLength) {
+    if (password.length <= minPasswordLength) {
         return `Password must be more than ${minPasswordLength} characters`;
     }
     return null;
@@ -34,9 +37,9 @@ class LoginForm extends React.Component {
         super();
         this.state = {
             email: "",
-            emailErrorText: "",
+            emailValidationText: "",
             password: "",
-            passwordErrorText: "",
+            passwordValidationText: "",
             isFormValid: false,
             isLoggedIn: false,
             errorMessage: ""
@@ -44,44 +47,44 @@ class LoginForm extends React.Component {
     }
 
     validateForm = () => {
-        const isFormValid = (this.state.email && this.state.password) &&
-            !(this.state.emailErrorText && this.state.passwordErrorText);
+        const isFormValid = passwordValidation(this.state.password) === null
+            && emailValidation(this.state.email) === null
+            && !(this.state.emailValidationText && this.state.passwordValidationText);
         this.setState({isFormValid});
     }
 
     onChangeEmail = event => {
         const email = event.target.value;
         this.setState({email});
-        this.setState({emailErrorText: emailValidation(email)});
-        this.validateForm();
+        this.setState({emailValidationText: emailValidation(email)}, () => this.validateForm());
     }
 
     onChangePassword = event => {
         const password = event.target.value;
         this.setState({password});
-        this.setState({passwordErrorText: passwordValidation(password)});
-        this.validateForm();
+        this.setState({passwordValidationText: passwordValidation(password)}, () => this.validateForm());
     }
 
     onSubmitForm = event => {
         event.preventDefault();
-        AuthService.login(
-            this.state.username,
-            this.state.password
-        ).then(res => {
-                this.setState({
-                    isLoggedIn: true
-                })
-            }), error => {
+        authService.login(this.state.email, this.state.password).then(res => {
+            if (res.data === 'Successful login') {
+                this.setState({isLoggedIn: true});
+            } else {
+                this.setState({errorMessage: res.toString()});
+            }
+            }, error => {
             this.setState({
                 isLoggedIn: false,
                 errorMessage: error.message
             })
-        }
+        });
     }
 
     render() {
-        return (
+        return this.state.isLoggedIn ?
+            <Redirect to="/feed" /> :
+            (
             <div className="align-items-center">
                 <div className="row logo justify-content-center">
                     <div className="col align-self-center">
@@ -102,7 +105,7 @@ class LoginForm extends React.Component {
                             />
                         </div>
                         <div className="error-text">
-                            <small className="text-danger"> {this.state.emailErrorText} </small>
+                            <small className="text-danger"> {this.state.emailValidationText} </small>
                         </div>
                         <div className="input-fields">
                             <input
@@ -115,14 +118,14 @@ class LoginForm extends React.Component {
                             />
                         </div>
                         <div className="error-text">
-                            <small className="text-danger"> {this.state.passwordErrorText} </small>
+                            <small className="text-danger"> {this.state.passwordValidationText} </small>
                         </div>
                         <div className="login-button-container">
                             <input
-                                type="submit"
+                                type="button"
                                 value="Log in"
                                 className="btn btn-primary btn-block login-button"
-                                onSubmit={this.onSubmitForm}
+                                onClick={this.onSubmitForm}
                                 disabled={!this.state.isFormValid}
                             />
                         </div>
@@ -140,6 +143,9 @@ class LoginForm extends React.Component {
                         </span>
                         Log in with Facebook
                     </button>
+                </div>
+                <div className="error-text">
+                    <small className="text-danger"> {this.state.errorMessage} </small>
                 </div>
                 <div className="row">
                     <div className="col forgot-password"> <a>Forgot password?</a> </div>
