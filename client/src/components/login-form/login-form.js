@@ -1,5 +1,6 @@
 import React from "react";
 import "./login-form.css";
+import AuthService from "../../services/auth.service";
 
 const emailValidation = (email) => {
     const validEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -37,7 +38,15 @@ class LoginForm extends React.Component {
             password: "",
             passwordErrorText: "",
             isFormValid: false,
-        }
+            isLoggedIn: false,
+            errorMessage: ""
+        };
+    }
+
+    validateForm = () => {
+        const isFormValid = (this.state.email && this.state.password) &&
+            !(this.state.emailErrorText && this.state.passwordErrorText);
+        this.setState({isFormValid});
     }
 
     onChangeEmail = event => {
@@ -54,10 +63,21 @@ class LoginForm extends React.Component {
         this.validateForm();
     }
 
-    validateForm = () => {
-        const isFormValid = (this.state.email && this.state.password) &&
-            !(this.state.emailErrorText && this.state.passwordErrorText);
-        this.setState({isFormValid});
+    onSubmitForm = event => {
+        event.preventDefault();
+        AuthService.login(
+            this.state.username,
+            this.state.password
+        ).then(res => {
+                this.setState({
+                    isLoggedIn: true
+                })
+            }), error => {
+            this.setState({
+                isLoggedIn: false,
+                errorMessage: error.message
+            })
+        }
     }
 
     render() {
@@ -102,6 +122,7 @@ class LoginForm extends React.Component {
                                 type="submit"
                                 value="Log in"
                                 className="btn btn-primary btn-block login-button"
+                                onSubmit={this.onSubmitForm}
                                 disabled={!this.state.isFormValid}
                             />
                         </div>
