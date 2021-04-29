@@ -1,6 +1,6 @@
 import "./home.css"
 import LoginForm from "../login-form/login-form";
-import SignupSmall from "../signup-small/signup-small";
+import SignupSmall from "../signup-prompt/signup-small";
 import DownloadApp from "../download-app/download-app";
 import React from "react";
 

@@ -130,7 +130,9 @@ class SignupForm extends React.Component {
                         <span className="fb-logo-white-container">
                             <img src={"/assets/facebook.png"} className="fb-logo-white"/>
                         </span>
-                        Log in with Facebook
+                        <text>
+                            Log in with Facebook
+                        </text>
                     </button>
                 </div>
                 <div className="text-strikethrough-container row">

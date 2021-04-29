@@ -2,7 +2,7 @@ import "./signup.css"
 import React from "react";
 import DownloadApp from "../download-app/download-app";
 import SignupForm from "../signup-form/signup-form";
-import LoginSmall from "../login-small/login-small";
+import LoginSmall from "../login-prompt/login-small";
 
 function Signup() {
     return (

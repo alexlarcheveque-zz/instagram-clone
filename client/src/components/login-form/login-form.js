@@ -7,29 +7,24 @@ const authService = new AuthService();
 
 const emailValidation = (email) => {
     const validEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if (email.trim() === '') {
-        return 'Email is required';
+    if (email.trim() === "") {
+        return "Email is required";
     }
     if (!validEmail.test(email)) {
-        return 'Please enter a valid email';
+        return "Please enter a valid email";
     }
     return null;
 };
 
 const passwordValidation = (password) => {
     const minPasswordLength = 6;
-    if (password.trim === '') {
-        return 'Password is required';
+    if (password.trim === "") {
+        return "Password is required";
     }
     if (password.length <= minPasswordLength) {
         return `Password must be more than ${minPasswordLength} characters`;
     }
     return null;
-};
-
-const validate = {
-    email: emailValidation,
-    password: passwordValidation
 };
 
 class LoginForm extends React.Component {
@@ -68,10 +63,11 @@ class LoginForm extends React.Component {
     onSubmitForm = event => {
         event.preventDefault();
         authService.login(this.state.email, this.state.password).then(res => {
-            if (res.data === 'Successful login') {
+            console.log(res.data);
+            if (res.data === "Successful login") {
                 this.setState({isLoggedIn: true});
             } else {
-                this.setState({errorMessage: res.toString()});
+                this.setState({errorMessage: res.data.toString()});
             }
             }, error => {
             this.setState({
@@ -139,7 +135,7 @@ class LoginForm extends React.Component {
                 <div className="row">
                     <button type="submit" className="btn btn-block fb-login">
                         <span>
-                            <img src={"/assets/facebook.png"} className="fb-logo"/>
+                            <img src={"/assets/facebook.png"} className="fb-logo" href="https://www.facebook.com/"/>
                         </span>
                         Log in with Facebook
                     </button>

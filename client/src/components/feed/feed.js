@@ -1,51 +1,72 @@
 import React from "react";
 import "./feed.css";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import {BrowserRouter as Router, Link, Redirect, Route} from "react-router-dom";
 import AuthService from "../../services/auth.service";
+
+const authService = new AuthService();
 
 class Feed extends React.Component{
     constructor() {
         super();
         this.state = {
             isLoggedIn: false,
-            currentUser: null,
+            email: '',
+            name: '',
+            username: ''
         }
     }
 
     componentDidMount() {
-        const user = AuthService.getCurrentUser();
-        this.isUserAuthenticated(user);
+        // TODO: Pass in session cookie into parameter, and authenticate user
+        const user = authService.getCurrentUser().then(res => {
+            if (res.status === 200) {
+                this.setState({
+                    isLoggedIn: true,
+                    email: '',
+                    name: '',
+                    username: ''
+                })
+            }
+        })
     }
 
-    isUserAuthenticated(user) {
-        if (user) {
-            this.setState({
-                isLoggedIn: true,
-                currentUser: user
-            })
-        }
+    logoutUserAndRefresh = () => {
+        authService.logout();
+        this.setState({isLoggedIn: false});
+        window.location.reload();
     }
 
-    logoutUserAndRedirectToHome() {
-        AuthService.logout();
-        // TODO: redirect user to home page
+    redirectToLoginPage = () => {
+        <Redirect push to="/" />
     }
 
-    // TODO: THIS NEEDS TO BE DYNAMIC
     render() {
+        let header, button, list;
+        if (this.state.isLoggedIn) {
+            header = <h1>Welcome to your Instagram feed!</h1>;
+            button =  <button className="btn btn-block btn-danger" type="button" value="Log out" onClick={this.logoutUserAndRefresh}> Sign Out </button>;
+            list =
+                `<ul>
+                <li> Email: {this.state.email} </li>
+                <li> Full Name: {this.state.name}</li>
+                <li> Username: {this.state.username}</li>
+                </ul>`
+        } else {
+            header = <h1>Please login.</h1>
+            button =  <button className="btn btn-block btn-primary" type="button" value="Log in" onClick={this.redirectToLoginPage}> Log In </button>;
+            list = <h2> Sign in to get your Instagram feed! </h2>
+        }
+
         return (
             <div className="justify-content-center">
-                <h1>Welcome to your Instagram feed!</h1>
-                <div className="list-container">
-                    <ul>
-                        <li> Email: {this.state.currentUser.email} </li>
-                        <li> Full Name: {this.state.currentUser.fullName}</li>
-                        <li> Username: {this.state.currentUser.username}</li>
-                        <li> Password: {this.state.currentUser.password}</li>
-                    </ul>
-                </div>
-                <div className="signout-container">
-                    <button className="btn btn-block btn-danger" type="submit" onSubmit={this.logoutUserAndRedirectToHome()}/>
+                <div className="text-center">
+                    {header}
+                    <div>
+                        {list}
+                    </div>
+                    <div>
+                        {button}
+                    </div>
                 </div>
             </div>
         );
