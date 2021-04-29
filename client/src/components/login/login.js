@@ -1,7 +1,7 @@
 import DownloadApp from "../download-app/download-app";
 import React from "react";
 import LoginForm from "../login-form/login-form";
-import SignupSmall from "../signup-small/signup-small";
+import SignupSmall from "../signup-prompt/signup-small";
 
 function Login() {
     return (

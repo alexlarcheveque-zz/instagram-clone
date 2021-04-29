@@ -1,28 +1,16 @@
 import axios from "./axios";
 
+const API_AUTHENTICATE = "/api/auth/authenticate";
 const API_SIGNUP = "/api/auth/signup";
 const API_SIGNIN = "/api/auth/login";
 
 class AuthService {
-    getCurrentUser = () => {
-        return JSON.parse(localStorage.getItem("user"));
-    }
-
-    login = (email, password) => {
-        return axios.post(API_SIGNIN, {
-                email,
-                password
-            })
-            .then(res => {
-                if (res.data.accessToken) {
-                    localStorage.setItem("user", JSON.stringify(res.data));
-                }
-                return res.data;
-            });
-    }
-
-    logout = () => {
-        localStorage.removeItem("user");
+    getCurrentUser = (token) => {
+        return axios.get(API_AUTHENTICATE, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
     }
 
     register = (email, name, username, password) => {
@@ -32,6 +20,17 @@ class AuthService {
             username,
             password
         });
+    }
+
+    login = (email, password) => {
+        return axios.post(API_SIGNIN, {
+                email,
+                password
+            });
+    }
+
+    logout = () => {
+        document.cookie = '';
     }
 }
 

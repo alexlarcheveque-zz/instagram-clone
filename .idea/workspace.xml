@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d89f4aa9-a47d-4d87-9878-cc06a4eef483" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/client/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/feed/feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/feed/feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/home/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/login-form/login-form.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/login-form/login-form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/login-small/login-small.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/login-prompt/login-small.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/login-small/login-small.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/login-prompt/login-small.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/login/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/signup-form/signup-form.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/signup-form/signup-form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/signup-small/signup-small.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/signup-prompt/signup-small.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/signup-small/signup-small.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/signup-prompt/signup-small.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/signup/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/signup/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/auth.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/public/stylesheets/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/error.pug" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/index.pug" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/layout.pug" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1rW9HJmOrai4q41Z4qQhV9fDVuo" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/components" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d89f4aa9-a47d-4d87-9878-cc06a4eef483" name="Default Changelist" comment="" />
+      <created>1619080889262</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1619080889262</updated>
+      <workItem from="1619080890408" duration="16000" />
+      <workItem from="1619285131553" duration="31652000" />
+      <workItem from="1619500578024" duration="7662000" />
+      <workItem from="1619583797960" duration="38523000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="3574" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1619675170215">
+      <screen x="1792" y="0" width="2560" height="1080" />
+    </state>
+    <state x="3574" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1792.0.2560.1080/0.0.1792.1120@1792.0.2560.1080" timestamp="1619675170215" />
+    <state x="3349" y="100" width="903" height="880" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1619423251324">
+      <screen x="1792" y="0" width="2560" height="1080" />
+    </state>
+    <state x="3349" y="100" width="903" height="880" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/1792.0.2560.1080/0.0.1792.1120@1792.0.2560.1080" timestamp="1619423251324" />
+    <state x="2794" y="100" width="1458" height="880" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1619677752897">
+      <screen x="1792" y="0" width="2560" height="1080" />
+    </state>
+    <state x="2794" y="100" width="1458" height="880" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1792.0.2560.1080/0.0.1792.1120@1792.0.2560.1080" timestamp="1619677752897" />
+    <state x="3588" y="461" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619606088452">
+      <screen x="1792" y="0" width="2560" height="1080" />
+    </state>
+    <state x="3588" y="461" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1792.0.2560.1080/0.0.1792.1120@1792.0.2560.1080" timestamp="1619606088452" />
+    <state x="3385" y="295" width="586" height="490" key="find.popup" timestamp="1619674035403">
+      <screen x="1792" y="0" width="2560" height="1080" />
+    </state>
+    <state x="3385" y="295" width="586" height="490" key="find.popup/1792.0.2560.1080/0.0.1792.1120@1792.0.2560.1080" timestamp="1619674035403" />
+    <state x="3395" y="241" width="670" height="676" key="search.everywhere.popup" timestamp="1619648894210">
+      <screen x="1792" y="0" width="2560" height="1080" />
+    </state>
+    <state x="3395" y="241" width="670" height="676" key="search.everywhere.popup/1792.0.2560.1080/0.0.1792.1120@1792.0.2560.1080" timestamp="1619648894210" />
+  </component>
+</project>
