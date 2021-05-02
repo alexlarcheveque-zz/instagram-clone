@@ -71,6 +71,11 @@ After these packages are installed, start the node server using `npm start`.
 
 Your Node server should be up and running! You can make your REST API calls can be made on http://localhost:8000.
 
+## Project Demo - Video
+
+You can checkout a video walkthrough/tutorial of my application: https://youtu.be/GjoCh1tQBNM
+
+
 ## Project Screenshots
 
 This is the home page of our Instagram clone! As you can see, it looks nearly identical as Instagram's home page. The home page is also reactive, and collapses the Instagram feed screenshots when the screensize gets too small.
@@ -96,6 +101,9 @@ Additionally, we have the Login page. This is different than the home page, as t
 Lastly, here is a picture of the Instagram feed page. It's a simple page with a Sign Out / Log In button depending on whether or not you are currently signed in. 
 
 ![Screen Shot 2021-04-29 at 12 18 14 AM](https://user-images.githubusercontent.com/52688349/116514832-68a73180-a880-11eb-910f-9a6ff08d672b.png)
+
+<img width="1034" alt="Screen Shot 2021-05-02 at 3 03 43 AM" src="https://user-images.githubusercontent.com/52688349/116809498-2d606900-aaf3-11eb-9303-7c816eb355a4.png">
+
 
 ## Challenges/Improvements
 
