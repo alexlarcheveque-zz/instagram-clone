@@ -63,8 +63,8 @@ class LoginForm extends React.Component {
     onSubmitForm = event => {
         event.preventDefault();
         authService.login(this.state.email, this.state.password).then(res => {
-            console.log(res.data);
-            if (res.data === "Successful login") {
+            if (res.status === 200) {
+                localStorage.setItem('token', res.data);
                 this.setState({isLoggedIn: true});
             } else {
                 this.setState({errorMessage: res.data.toString()});

@@ -3,6 +3,7 @@ var router = express.Router();
 const mysql = require("mysql");
 const jwt = require('jsonwebtoken');
 
+const SECRET_TOKEN = 'helloworld'; // TODO: To make .env
 const AUTHENTICATE_USER = 'SELECT * FROM user WHERE email = ? AND password = ?';
 const SIGNUP_USER = 'INSERT INTO user(email, name, username, password) VALUES (?, ?, ?, ?)';
 
@@ -18,8 +19,26 @@ connection.connect(function(err) {
     console.log('You are now connected...')
 })
 
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    console.error('Token in authenticate token', req.headers);
+    if (token === null) {
+        return res.sendStatus(401);
+    }
+    jwt.verify(token, SECRET_TOKEN, (err, user) => {
+        console.error('jwt verify', err, user);
+        if (err) {
+            return res.sendStatus(403);
+        } else {
+            req.user = user;
+            next();
+        }
+    });
+}
+
 router.get('/', function(req, res) {
-    res.send('Login/Signup into the Instagram application');
+    res.sed('Login/Signup into the Instagram application');
 });
 
 router.post("/login", (req, res) => {
@@ -31,13 +50,10 @@ router.post("/login", (req, res) => {
             } else {
                 if (results.length > 0) {
                     const user = {user: results[0]};
-                    res.send('Successful login');
-                    //     const token = jwt.sign(user, SECRET_TOKEN, {
-                    //         expiresIn: '24h'
-                    //     });
-                    //     res.json(token);
+                    const token = jwt.sign(user, SECRET_TOKEN);
+                    res.status(200).json(token);
                 } else {
-                    res.send('Incorrect Username and/or Password');
+                    res.status(401).send('Incorrect Username and/or Password');
                 }
                 res.end();
             }
@@ -62,31 +78,9 @@ router.post("/signup", (req, res) => {
     }
 });
 
-/** For JWT Protected Route
-
- const SECRET_TOKEN = 'helloworld'; // This would be stored in .ENV file, which is embedded during the build time.
-
-
-const authenticateJWT = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    if (authHeader) {
-        const token = authHeader.split(' ')[1];
-        jwt.verify(token, SECRET_TOKEN, (err, user) => {
-            if (err) {
-                return res.sendStatus(403);
-            }
-            req.user = user;
-            next();
-        });
-    } else {
-        res.sendStatus(401);
-    }
-};
-
-router.get("/authenticate", authenticateJWT, (req, res) => {
-    res.send('User is authorized!');
+router.get("/authenticate", authenticateToken, (req, res) => {
+    res.status(200).json(req.user);
     res.end();
 });
- **/
 
 module.exports = router;

@@ -2,13 +2,13 @@ import axios from "./axios";
 
 const API_AUTHENTICATE = "/api/auth/authenticate";
 const API_SIGNUP = "/api/auth/signup";
-const API_SIGNIN = "/api/auth/login";
+const API_LOGIN = "/api/auth/login";
 
 class AuthService {
     getCurrentUser = (token) => {
         return axios.get(API_AUTHENTICATE, {
             headers: {
-                Authorization: `Bearer ${token}`
+                'authorization': `Bearer ${token}`
             }
         });
     }
@@ -23,14 +23,14 @@ class AuthService {
     }
 
     login = (email, password) => {
-        return axios.post(API_SIGNIN, {
+        return axios.post(API_LOGIN, {
                 email,
                 password
             });
     }
 
     logout = () => {
-        document.cookie = '';
+        localStorage.removeItem('token');
     }
 }
 

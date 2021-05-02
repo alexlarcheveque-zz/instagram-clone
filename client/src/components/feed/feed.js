@@ -17,14 +17,14 @@ class Feed extends React.Component{
     }
 
     componentDidMount() {
-        // TODO: Pass in session cookie into parameter, and authenticate user
-        const user = authService.getCurrentUser().then(res => {
+        const userToken = localStorage.getItem('token');
+        const user = authService.getCurrentUser(userToken).then(res => {
             if (res.status === 200) {
                 this.setState({
                     isLoggedIn: true,
-                    email: '',
-                    name: '',
-                    username: ''
+                    email: res.data.user['Email'],
+                    name: res.data.user['Name'],
+                    username: res.data.user['Username']
                 })
             }
         })
@@ -37,7 +37,7 @@ class Feed extends React.Component{
     }
 
     redirectToLoginPage = () => {
-        <Redirect push to="/" />
+        this.props.history.push('/login');
     }
 
     render() {
@@ -46,22 +46,22 @@ class Feed extends React.Component{
             header = <h1>Welcome to your Instagram feed!</h1>;
             button =  <button className="btn btn-block btn-danger" type="button" value="Log out" onClick={this.logoutUserAndRefresh}> Sign Out </button>;
             list =
-                `<ul>
+                <ul>
                 <li> Email: {this.state.email} </li>
                 <li> Full Name: {this.state.name}</li>
                 <li> Username: {this.state.username}</li>
-                </ul>`
+                </ul>;
         } else {
-            header = <h1>Please login.</h1>
+            header = <h1>Please login.</h1>;
             button =  <button className="btn btn-block btn-primary" type="button" value="Log in" onClick={this.redirectToLoginPage}> Log In </button>;
-            list = <h2> Sign in to get your Instagram feed! </h2>
+            list = <h2> Sign in to get your Instagram feed! </h2>;
         }
 
         return (
             <div className="justify-content-center">
                 <div className="text-center">
                     {header}
-                    <div>
+                    <div className="text-left">
                         {list}
                     </div>
                     <div>
